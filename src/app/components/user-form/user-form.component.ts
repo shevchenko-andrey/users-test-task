@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -11,11 +11,13 @@ export class UserFormComponent implements OnInit {
   email: string;
   phone: string;
   address: string;
+  @Input() readonly: boolean;
   constructor() {
     this.fullName = '';
     this.email = '';
     this.phone = '';
     this.address = '';
+    this.readonly = false;
   }
   handleSubmit() {
     console.log();
