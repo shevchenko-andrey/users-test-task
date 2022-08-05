@@ -1,0 +1,10 @@
+.card {
+  :not(:last-child) {
+    margin-bottom: 1em;
+  }
+  :hover {
+    color: var(--white);
+    text-decoration: none;
+    background-color: var(--primary);
+  }
+}
