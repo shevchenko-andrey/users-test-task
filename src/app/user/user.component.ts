@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbNavConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-user',
@@ -7,6 +7,7 @@ import { NgbNavConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent implements OnInit {
+  @Input() user = '';
   constructor(config: NgbNavConfig) {
     config.destroyOnHide = false;
     config.roles = false;

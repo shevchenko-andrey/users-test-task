@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/service/user-service.service';
 
 @Component({
   selector: 'app-user-form',
@@ -11,16 +12,25 @@ export class UserFormComponent implements OnInit {
   email: string;
   phone: string;
   address: string;
-  @Input() readonly: boolean;
-  constructor() {
+
+  constructor(private userService: UserService) {
     this.fullName = '';
     this.email = '';
     this.phone = '';
     this.address = '';
-    this.readonly = false;
   }
-  handleSubmit() {
-    console.log();
+  handleSubmit(form: NgForm) {
+    const { fullName, email, phone, address } = form.value;
+    console.log(form);
+    const payload = {
+      fullName,
+      email,
+      phone,
+      address,
+    };
+
+    this.userService.add(payload);
+    form.onReset();
   }
 
   ngOnInit(): void {}

@@ -1,4 +1,3 @@
-<ul class="list-group user-list">
-  <app-list-item></app-list-item>
-  <app-list-item></app-list-item>
+<ul *ngFor="let user of userList$ | async" class="list-group user-list">
+  <app-list-item [user]="user" routerLink="user/details"></app-list-item>
 </ul>
