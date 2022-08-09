@@ -1,3 +1,6 @@
 .user-form {
   min-width: 15em;
 }
+.ng-invalid.ng-touched {
+  border-color: #ff0000;
+}
