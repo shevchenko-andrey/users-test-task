@@ -5,9 +5,20 @@ import { ListItemComponent } from './list-item/list-item.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { DetailsComponent } from './details/details.component';
 @NgModule({
-  declarations: [UserFormComponent, ListItemComponent, UserListComponent],
+  declarations: [
+    UserFormComponent,
+    ListItemComponent,
+    UserListComponent,
+    DetailsComponent,
+  ],
   imports: [FormsModule, RouterModule, CommonModule],
-  exports: [UserFormComponent, ListItemComponent, UserListComponent],
+  exports: [
+    UserFormComponent,
+    ListItemComponent,
+    UserListComponent,
+    DetailsComponent,
+  ],
 })
 export class ComponentsModule {}

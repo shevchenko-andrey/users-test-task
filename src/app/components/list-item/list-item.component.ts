@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
-
+import {Router} from "@angular/router"
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
@@ -8,7 +8,12 @@ import { User } from 'src/app/models/user';
 })
 export class ListItemComponent implements OnInit {
   @Input() public user!: User;
-  constructor() {}
+  
+  constructor(private router : Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+  public navigateTo() {
+    this.router.navigateByUrl(`user/${this.user.id}`)
+    
+  }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 const initialState = [
   {
     fullName: '',
@@ -33,10 +33,8 @@ export class UserService {
       this.loading$.next(false);
     });
   }
-  public getUserById(id: string) {
-    this.httpClient.get(`${this.baseURL}/users/${id}`).subscribe((user) => {
-      return user;
-    });
+  public getUserById(id: string): Observable<User> {
+    return this.httpClient.get<User>(`${this.baseURL}/users/${id}`);
   }
   public add(payload: User) {
     this.loading$.next(true);
@@ -47,6 +45,10 @@ export class UserService {
         this.entities$.next(this.userList);
         this.loading$.next(false);
       });
+  }
+  public change(payload: User, id: string): Observable<User> {
+    this.loading$.next(true);
+    return this.httpClient.patch<User>(`${this.baseURL}/users/${id}`, payload);
   }
   public delete(id: string) {
     this.loading$.next(true);
